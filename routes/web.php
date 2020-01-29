@@ -15,15 +15,31 @@ Route::get('/', function () {
     return view('welkom');
 });
 
-Route::get('/profiel', function () {
-    return view('profiel');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
-
 Route::get('/blog', function () {
     return view('blog');
 });
+
+Route::get('/motivatie', function () {
+    return view('motivatie');
+});
+
+Route::get('/beroepsbeeld', function () {
+    return view('beroepsbeeld');
+});
+
+//Route::get('/{page}', function ($page) {
+//    $pages = [
+//        'welkom' => 'welkom',
+//        'profiel' => 'profiel',
+//        'dashboard' => 'dashboard'
+//    ];
+//
+//    if (! array_key_exists($page, $pages)) {
+//        abort(404, "Sorry this post does not exist");
+//    }
+//
+//    return view($pages[$page]);
+//});
+
+Route::get('/{page}', 'PagesController@display');
 
