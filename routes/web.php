@@ -12,5 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welkom');
 });
+
+Route::get('/profiel', function () {
+    return view('profiel');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
+Route::get('/blog', function () {
+    return view('blog');
+});
+
