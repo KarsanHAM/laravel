@@ -44,7 +44,6 @@
               <li> Muziek </li>
             </ul>
           </li>
-          </li>
         </ul>
       </div>
       <!-- List of quick facts about me inluding a table -->
@@ -84,6 +83,21 @@
               target="_blank">Hier is mijn playlist!</a></li>
         </ul>
       </div>
+    </div>
+    <div class="row">
+        <div class="col-6 allcols">
+    <ul>
+        <h3>Blog</h3>
+        <li>
+            @foreach($articles as $article)
+            <ul>
+                <h4><a href="profiel/{{$article->id}}">{{$article->title}}</a></h4>
+                <li>{{$article->excerpt}}</li>
+            </ul>
+            @endforeach
+        </li>
+    </ul>
+        </div>
     </div>
   </div>
 </body>

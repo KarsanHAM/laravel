@@ -14,6 +14,7 @@
     <!-- Font awesome for Footer icons -->
     <script src="https://kit.fontawesome.com/0c8a67b855.js"></script>
     <!-- Link to CSS style sheet -->
-    <link rel="stylesheet" type="text/css" href="../../style.css">
+    <link rel="stylesheet" type="text/css" href='css/style.css'>
+    <link rel="stylesheet" type="text/css" href="css/app.css">
     <title>Welcome</title>
 </head>

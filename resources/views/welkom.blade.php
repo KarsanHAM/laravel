@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-<!-- Header -->
-@include('partials.head')
-<body>
-<!-- Navbar -->
-@include ('partials.nav');
-<!-- Name of the page -->
+@extends('layout')
+
+@section('content')
 <div class="container">
     <div class="row">
         <div class="col-12 text-center">
@@ -54,6 +49,4 @@
     </div>
 </div>
 </body>
-<!-- Footer -->
-@include ('partials.footer');
-</html>
+@endsection

@@ -41,5 +41,23 @@ Route::get('/beroepsbeeld', function () {
 //    return view($pages[$page]);
 //});
 
-Route::get('/{page}', 'PagesController@display');
+//Route::get('/{page}', 'PagesController@display');
+
+Route::get('/profiel', function () {
+
+    return view('profiel', [
+        'articles' => App\Blog::take(3)->latest()->get()
+    ]);
+});
+
+Route::get('/blog', function () {
+
+    return view('blog', [
+        'articles' => App\Blog::take(3)->latest()->get()
+    ]);
+});
+
+Route::get('/profiel/{post}', 'BlogpostController@show');
+
+Route::get('/blog/{post}', 'BlogpostController@show');
 
