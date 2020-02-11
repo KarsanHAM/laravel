@@ -14,15 +14,13 @@
 </div>
 <div class="container">
      <div class="row">
-          <div class="col-12 text-center">
-              <li>
-                  @foreach($articles as $article)
-                      <ul>
-                          <h4><a href="blog/{{$article->id}}">{{$article->title}}</a></h4>
-                          <li>{{$article->excerpt}}</li>
-                      </ul>
+          <div class="col-6 allcols">
+              <ul>
+                  @foreach($posts as $post)
+                          <h4><a href="blog/{{$post->id}}">{{$post->title}}</a></h4>
+                          <p>{{$post->excerpt}}</p>
                   @endforeach
-              </li>
+              </ul>
           </div>
     </div>
 </div>
