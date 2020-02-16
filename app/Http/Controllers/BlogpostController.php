@@ -14,9 +14,9 @@ class BlogpostController extends Controller
         return view('posts.index', ['posts' => $posts]);
     }
 
-    public function show($id)
+    public function show(Blog $post)
     {
-        $post = Blog::find($id);
+//        $post = Blog::findOrFail($id);
 
         return view('posts.show', ['post' => $post]);
     }
@@ -28,36 +28,31 @@ class BlogpostController extends Controller
 
     public function store()
     {
-        request()->validate([
+        Blog::create($this->validateArticle());
+        return route('posts.index');
+    }
+
+    public function edit(Blog $post)
+    {
+        return view('posts.edit', ['post' => $post]);
+    }
+
+    public function update(Blog $post)
+    {
+        $post->update($this->validateArticle());
+
+        return redirect(route('posts.show', $post));
+    }
+
+    /**
+     * @return array
+     */
+    public function validateArticle()
+    {
+        return request()->validate([
             'title' => 'required',
             'excerpt' => 'required',
             'body' => 'required'
         ]);
-
-        $blog = new Blog();
-        $blog->title = request('title');
-        $blog->excerpt = request('excerpt');
-        $blog->body = request('body');
-        $blog->save();
-        return redirect('/blog');
-    }
-
-    public function edit($id)
-    {
-        $post = Blog::find($id);
-
-        return view('posts.edit', ['post' => $post]);
-    }
-
-    public function update($id)
-    {
-        $blog = Blog::find($id);
-
-        $blog->title = request('title');
-        $blog->excerpt = request('excerpt');
-        $blog->body = request('body');
-        $blog->save();
-
-        return redirect('/blog/' . $blog->id);
     }
 }

@@ -6,15 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Assignment extends Model
 {
-    public function setGrade($newGrade) {
-        echo $this->grade;
-        echo $newGrade;
-        if ($newGrade >= $this->grade) {
+    public function courses () {
+        return $this->belongsTo(Course::class);
+    }
+
+    function setGrade($newGrade) {
+        $currentGrade = $this->grade;
+
+        if ($newGrade > $currentGrade) {
             $this->grade = $newGrade;
+            $currentGrade = $newGrade;
         }
-        if ($newGrade >= 5.5) {
-            $this->completed = true;
+
+        if ($currentGrade >= 5.5 ) {
+            $this->passed = true;
         }
+
         $this->save();
+
     }
 }

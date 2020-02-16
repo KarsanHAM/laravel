@@ -17,7 +17,7 @@
           <div class="col-6 allcols">
               <ul>
                   @foreach($posts as $post)
-                          <h4><a href="blog/{{$post->id}}">{{$post->title}}</a></h4>
+                          <h4><a href="{{route('posts.show', $post)}}">{{$post->title}}</a></h4>
                           <p>{{$post->excerpt}}</p>
                   @endforeach
               </ul>
