@@ -31,6 +31,10 @@ Route::get('/profiel', function () {
 });
 
 Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboard/assignments/{assignment}', 'AssignmentController@show');
+Route::get('/dashboard/assignments/create', 'AssignmentController@create');
+Route::get('/dashboard/courses/create', 'CourseController@create');
+Route::get('/dashboard/courses/{course}', 'CourseController@show');
 Route::get('/blog', 'BlogpostController@index')->name('posts.index');
 Route::post('/blog', 'BlogpostController@store');
 Route::get('/blog/create', 'BlogpostController@create');
