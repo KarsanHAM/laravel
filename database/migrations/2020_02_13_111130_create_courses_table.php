@@ -17,6 +17,7 @@ class CreateCoursesTable extends Migration
             $table->bigIncrements('id');
             $table->text('name');
             $table->float('EC', 3, 1);
+            $table->boolean('passed')->default(false);
             $table->timestamps();
         });
     }

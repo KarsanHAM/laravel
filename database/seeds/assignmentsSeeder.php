@@ -23,18 +23,18 @@ class assignmentsSeeder extends Seeder
             ]);
         }
 
-        createAssignment(1,'Eindgesprek', 100, 8.0);
-        createAssignment(2,'Theorietentamen', 100);
-        createAssignment(3,'Casustoets', 100);
-        createAssignment(4,'Presentatie', 33);
-        createAssignment(4,'Verslag', 33);
-        createAssignment(4,'Functioneringsgesprek', 33);
+        createAssignment(1,'Eindgesprek', 100, 6.5);
+        createAssignment(2,'Theorietentamen', 100, 8.5);
+        createAssignment(3,'Casustoets', 100, 6.0);
+        createAssignment(4,'Presentatie', 33, 5.4);
+        createAssignment(4,'Verslag', 33, 5.4);
+        createAssignment(4,'Functioneringsgesprek', 33, 5.7);
         createAssignment(5,'Portfolio', 100);
-        createAssignment(6,'Casustoets', 50);
-        createAssignment(6,'Groepsproject', 50);
+        createAssignment(6,'Casustoets', 50, 5.5);
+        createAssignment(6,'Groepsproject', 50, 7.5);
         createAssignment(7,'Agile functioneren', 50);
-        createAssignment(7,'NL opdrachten', 25);
-        createAssignment(7,'Verslag', 25);
+        createAssignment(7,'Taaltoets', 25, 6.6);
+        createAssignment(7,'Verslag', 25, 7.7);
         createAssignment(8,'Eindgesprek', 100);
         createAssignment(9,'Casustoets', 100);
         createAssignment(10,'Requirementsverslag', 50);

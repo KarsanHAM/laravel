@@ -59,7 +59,7 @@
                                 <td>{{$assignment->weight . '%'}}</td>
                                 <td>{{$assignment->grade}}</td>
                                 @if($counter === 0)
-                                    @if($assignment->passed === true)
+                                    @if($course->passed === true)
                                         <td>&#10004;</td>
                                     @else
                                         <td>&#10060;</td>
@@ -71,6 +71,8 @@
                 @endforeach
                 @endforeach
             </table>
+            <a class="button-green" href="/dashboard/assignments/create">Create Assignment</a>
+            <a class="button-green" href="/dashboard/courses/create">Create Course</a>
         </div>
     </div>
     <!-- List of usefull links -->

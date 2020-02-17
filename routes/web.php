@@ -30,11 +30,21 @@ Route::get('/profiel', function () {
     ]);
 });
 
-Route::get('/dashboard', 'DashboardController@index');
-Route::get('/dashboard/assignments/{assignment}', 'AssignmentController@show');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
+Route::post('/dashboard/courses', 'CourseController@store');
+
 Route::get('/dashboard/assignments/create', 'AssignmentController@create');
+Route::post('/dashboard/assignments', 'AssignmentController@store');
 Route::get('/dashboard/courses/create', 'CourseController@create');
-Route::get('/dashboard/courses/{course}', 'CourseController@show');
+
+Route::get('/dashboard/assignments/{assignment}/edit', 'AssignmentController@edit');
+Route::put('/dashboard/assignments/{assignment}');
+
+Route::get('/dashboard/courses/{course}', 'CourseController@show')->name('course.show');
+Route::get('/dashboard/assignments/{assignment}', 'AssignmentController@show')->name('assignment.show');
+Route::get('/dashboard/courses/{course}/edit', 'CourseController@edit');
+Route::put('/dashboard/courses/{course}', 'CourseController@update');
+
 Route::get('/blog', 'BlogpostController@index')->name('posts.index');
 Route::post('/blog', 'BlogpostController@store');
 Route::get('/blog/create', 'BlogpostController@create');

@@ -18,12 +18,17 @@ class DashboardController extends Controller
         $courses = Course::all();
         $assignments = Assignment::all();
 
-        foreach ($assignments as $assignment) {
-            $currentGrade = $assignment->grade;
-            if ($currentGrade >= 5.5) {
-                $assignment->passed = true;
+        foreach ($courses as $course) {
+            $totalGrade = 0;
+            foreach ($course->assignments as $singleAssignment) {
+                    $amountOfAssignments = count($course->assignments);
+                    $totalGrade += $singleAssignment->grade;
+                $courseAverage = $totalGrade / $amountOfAssignments;
+                if ($courseAverage >= 5.5) {
+                    $course->passed = true;
+                    $course->save();
+                }
             }
-            $assignment->save();
         }
 
         return view('dashboard', ['courses' => $courses, 'assignments' => $assignments]);

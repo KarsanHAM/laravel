@@ -26,7 +26,8 @@ class AssignmentController extends Controller
      */
     public function create()
     {
-        //
+        $courses = Course::all();
+        return view('assignment.create', ['courses' => $courses]);
     }
 
     /**
@@ -37,7 +38,8 @@ class AssignmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Assignment::create($this->validateAssignment());
+        return  redirect()->route('dashboard.index');
     }
 
     /**
@@ -60,9 +62,12 @@ class AssignmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Assignment $assignment)
     {
-        //
+        $assignment = Assignment::find($assignment->id);
+        $courses = Course::all();
+        $currentCourse = $assignment->course;
+        return view('assignment.edit', ['assignment' => $assignment, 'currentCourse' => $currentCourse, 'courses'  => $courses]);
     }
 
     /**
@@ -72,9 +77,10 @@ class AssignmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Assignment $assignment)
     {
-        //
+        $assignment->update($this->validateAssignment());
+        return redirect()->route('assignment.show',$assignment);
     }
 
     /**
@@ -86,5 +92,18 @@ class AssignmentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * @return array
+     */
+    public function validateAssignment()
+    {
+        return request()->validate([
+            'course_id' => 'required',
+            'name' => 'required',
+            'weight' => 'required',
+            'grade' => 'required',
+        ]);
     }
 }

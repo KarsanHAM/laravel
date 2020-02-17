@@ -34,9 +34,10 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        Course::create($this->validateCourse());
+        return  redirect()->route('dashboard.index');
     }
 
     /**
@@ -61,7 +62,9 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $course = Course::find($id);
+
+        return view('course.edit', ['course' => $course]);
     }
 
     /**
@@ -71,9 +74,10 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Course $course)
     {
-        //
+        $course->update($this->validateCourse());
+        return redirect(route('course.show', $course));
     }
 
     /**
@@ -85,5 +89,16 @@ class CourseController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * @return array
+     */
+    public function validateCourse()
+    {
+        return request()->validate([
+            'name' => 'required',
+            'EC' => 'required'
+        ]);
     }
 }
