@@ -37,8 +37,10 @@ Route::get('/dashboard/assignments/create', 'AssignmentController@create');
 Route::post('/dashboard/assignments', 'AssignmentController@store');
 Route::get('/dashboard/courses/create', 'CourseController@create');
 
+Route::delete('/dashboard/courses/{course}/delete', 'CourseController@destroy')->name('course.destroy');
+Route::delete('/dashboard/assignments/{assignment}/delete', 'AssignmentController@destroy')->name('assignment.destroy');
 Route::get('/dashboard/assignments/{assignment}/edit', 'AssignmentController@edit');
-Route::put('/dashboard/assignments/{assignment}');
+Route::put('/dashboard/assignments/{assignment}', 'AssignmentController@update');
 
 Route::get('/dashboard/courses/{course}', 'CourseController@show')->name('course.show');
 Route::get('/dashboard/assignments/{assignment}', 'AssignmentController@show')->name('assignment.show');

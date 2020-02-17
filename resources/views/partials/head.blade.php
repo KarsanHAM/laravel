@@ -12,7 +12,7 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
     <!-- Font awesome for Footer icons -->
-    <script src="https://kit.fontawesome.com/0c8a67b855.js"></script>
+    <script src="https://kit.fontawesome.com/569861b2e5.js" crossorigin="anonymous"></script>
     <!-- Link to CSS style sheet -->
     <link rel="stylesheet" type="text/css" href='css/style.css'>
     <link rel="stylesheet" type="text/css" href="css/app.css">

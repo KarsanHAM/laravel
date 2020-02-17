@@ -45,31 +45,47 @@
                 </tr>
                 </thead>
                 @foreach($courses as $course)
-                    <tr>
-                        <td><a href="dashboard/courses/{{$course->id}}">{{$course->name}}</a></td>
-                        <td>{{$course->EC}}</td>
-                        @php($counter = 0)
-                        @foreach($assignments as $assignment)
-                            @if ($assignment->course_id === $course->id)
-                                @if($counter >= 1)
-                                    <td></td>
-                                    <td></td>
-                                @endif
-                                <td><a href="dashboard/assignments/{{$assignment->id}}">{{$assignment->name}}</a></td>
-                                <td>{{$assignment->weight . '%'}}</td>
-                                <td>{{$assignment->grade}}</td>
-                                @if($counter === 0)
-                                    @if($course->passed === true)
-                                        <td>&#10004;</td>
-                                    @else
-                                        <td>&#10060;</td>
+                    <td><a href="dashboard/courses/{{$course->id}}">{{$course->name}}</a><a
+                            href="dashboard/courses/{{$course->id}}/edit"><i class="fas fa-pencil-alt"
+                                                                             style="font-size: 15px;color: blue"></i></a>
+                        <form method="POST" action="{{route('course.destroy', $course->id)}}">
+                            @csrf
+                            {{ method_field('DELETE') }}
+                            <input class="btn" value="&#128465;" type="submit" style="width:50px">
+                        </form>
+                    </td>
+                    <td>{{$course->EC}}</td>
+                    @php($counter = 0)
+                    @foreach($assignments as $assignment)
+                        @if ($assignment->course_id === $course->id)
+                            @if($counter >= 1)
+                                <td></td>
+                                <td></td>
+                            @endif
+                            <td><a href="dashboard/assignments/{{$assignment->id}}">{{$assignment->name}}</a><a
+                                    href="dashboard/assignments/{{$assignment->id}}/edit"><i
+                                        class="fas fa-pencil-alt"
+                                        style="font-size: 15px;color: blue"></i></a>
+                                <form method="POST" action="{{route('assignment.destroy', $assignment->id)}}">
+                                    @csrf
+                                    {{ method_field('DELETE') }}
+                                    <input class="btn" value="&#128465;" type="submit" style="width:50px">
+                                </form>
+                            </td>
+                            <td>{{$assignment->weight . '%'}}</td>
+                            <td>{{$assignment->grade}}</td>
+                            @if($counter === 0)
+                                @if($course->passed === true)
+                                    <td>&#10004;</td>
+                                @else
+                                    <td>&#10060;</td>
                                     @endif
+                                    @endif
+                                    @php($counter++)
+                                    </tr>
                                 @endif
-                                @php($counter++)
-                    </tr>
-                    @endif
-                @endforeach
-                @endforeach
+                                @endforeach
+                                @endforeach
             </table>
             <a class="button-green" href="/dashboard/assignments/create">Create Assignment</a>
             <a class="button-green" href="/dashboard/courses/create">Create Course</a>

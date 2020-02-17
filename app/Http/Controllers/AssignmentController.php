@@ -51,7 +51,7 @@ class AssignmentController extends Controller
     public function show($id)
     {
         $assignment = Assignment::find($id);
-        $course = $assignment->courses()->first();
+        $course = $assignment->course()->first();
 
         return view('assignment.show', ['course' => $course, 'assignment' => $assignment]);
     }
@@ -91,7 +91,8 @@ class AssignmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Assignment::destroy($id);
+        return redirect()->route('dashboard.index');
     }
 
     /**

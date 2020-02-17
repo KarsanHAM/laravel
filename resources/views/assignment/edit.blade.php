@@ -4,7 +4,7 @@
         <div class="row">
             <div col-6>
                 <h1>Edit Assignment: {{$assignment->name}}</h1>
-                <form method="POST" action="/dashboard/assignments">
+                <form method="POST" action="/dashboard/assignments/{{$assignment->id}}">
                     @csrf
                     @method('PUT')
 
@@ -14,7 +14,7 @@
                         <div>
                             <select id="course_id" name="course_id">
                                 @foreach($courses as $course)
-                                    <option value="{{$currentCourse->name}}">{{$course->name}}</option>
+                                    <option value="{{$course->id}}">{{$course->name}}</option>
                                 @endforeach
                             </select>
                         </div>
