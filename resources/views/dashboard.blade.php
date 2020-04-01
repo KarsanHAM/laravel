@@ -44,6 +44,7 @@
                     <th>Onderdeel behaald</th>
                 </tr>
                 </thead>
+                Hey dit werkt niet
                 @foreach($courses as $course)
                     <td><a href="dashboard/courses/{{$course->id}}">{{$course->name}}</a><a
                             href="dashboard/courses/{{$course->id}}/edit"><i class="fas fa-pencil-alt"
